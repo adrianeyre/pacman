@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    class GameBoard
+    public class GameBoard
     {
         public PictureBox BoardImage = new PictureBox();
         public int[,] Matrix = new int[30,27];
