@@ -21,7 +21,7 @@ namespace Pacman
         }
 
         [Test]
-        public void CreatePacman()
+        public void CreatePacmanTest()
         {
             Pacman pacman = new Pacman();
             // Check default Pacman image has been created

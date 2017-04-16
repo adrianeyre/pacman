@@ -24,11 +24,13 @@ namespace Pacman
 
         public void CreatePacmanImage(Form formInstance)
         {
+            // Create Pacman Image
             PacmanImage.Name = "PacmanImage";
             PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
             PacmanImage.Location = new Point(0, 0);
             PacmanImage.Image = Properties.Resources.Pacman_2_1;
             formInstance.Controls.Add(PacmanImage);
+            PacmanImage.BringToFront();
         }
     }
 }

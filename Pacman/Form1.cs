@@ -15,6 +15,9 @@ namespace Pacman
         public Form1()
         {
             InitializeComponent();
+            GameBoard gameboard = new GameBoard();
+            gameboard.CreateBoardImage(this, 1);
+
             Pacman pacman = new Pacman();
             pacman.CreatePacmanImage(this);
 
