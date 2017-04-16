@@ -89,6 +89,48 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Block 1.bmp" />
+    <Content Include="Images\Block 2.bmp" />
+    <Content Include="Images\Board 1.bmp" />
+    <Content Include="Images\eyes.bmp" />
+    <Content Include="Images\Ghost 0 1.bmp" />
+    <Content Include="Images\Ghost 0 2.bmp" />
+    <Content Include="Images\Ghost 0 3.bmp" />
+    <Content Include="Images\Ghost 0 4.bmp" />
+    <Content Include="Images\Ghost 1 1.bmp" />
+    <Content Include="Images\Ghost 1 2.bmp" />
+    <Content Include="Images\Ghost 1 3.bmp" />
+    <Content Include="Images\Ghost 1 4.bmp" />
+    <Content Include="Images\Ghost 2 1.bmp" />
+    <Content Include="Images\Ghost 2 2.bmp" />
+    <Content Include="Images\Ghost 2 3.bmp" />
+    <Content Include="Images\Ghost 2 4.bmp" />
+    <Content Include="Images\Ghost 3 1.bmp" />
+    <Content Include="Images\Ghost 3 2.bmp" />
+    <Content Include="Images\Ghost 3 3.bmp" />
+    <Content Include="Images\Ghost 3 4.bmp" />
+    <Content Include="Images\Ghost 4.bmp" />
+    <Content Include="Images\Ghost 5.bmp" />
+    <Content Include="Images\Life.bmp" />
+    <Content Include="Images\Pacman 0.bmp" />
+    <Content Include="Images\Pacman 1 0.bmp" />
+    <Content Include="Images\Pacman 1 1.bmp" />
+    <Content Include="Images\Pacman 1 2.bmp" />
+    <Content Include="Images\Pacman 1 3.bmp" />
+    <Content Include="Images\Pacman 2 0.bmp" />
+    <Content Include="Images\Pacman 2 1.bmp" />
+    <Content Include="Images\Pacman 2 2.bmp" />
+    <Content Include="Images\Pacman 2 3.bmp" />
+    <Content Include="Images\Pacman 3 0.bmp" />
+    <Content Include="Images\Pacman 3 1.bmp" />
+    <Content Include="Images\Pacman 3 2.bmp" />
+    <Content Include="Images\Pacman 3 3.bmp" />
+    <Content Include="Images\Pacman 4 0.bmp" />
+    <Content Include="Images\Pacman 4 1.bmp" />
+    <Content Include="Images\Pacman 4 2.bmp" />
+    <Content Include="Images\Pacman 4 3.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
