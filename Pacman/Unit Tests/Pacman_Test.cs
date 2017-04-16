@@ -25,10 +25,10 @@ namespace Pacman
         {
             Pacman pacman = new Pacman();
             // Check default Pacman image has been created
-            pacman.CreatePacmanImage(new Form1());
+            pacman.CreatePacmanImage(new Form1(),0,0);
             Assert.AreNotEqual(null, pacman.PacmanImage.Image);
-            Assert.AreEqual(0, pacman.PacmanImage.Left);
-            Assert.AreEqual(0, pacman.PacmanImage.Top);
+            Assert.AreEqual(-3, pacman.PacmanImage.Left);
+            Assert.AreEqual(43, pacman.PacmanImage.Top);
             Assert.AreEqual("PacmanImage", pacman.PacmanImage.Name);
         }
     }

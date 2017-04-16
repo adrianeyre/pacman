@@ -22,12 +22,13 @@ namespace Pacman
             GameBoard gameboard = new GameBoard();
             gameboard.CreateBoardImage(this, Level);
 
+            // Initialise Board Matrix
+            Tuple<int, int> PacmanStartCoordinates = gameboard.InitialiseBoardMatrix(Level);
+            //Console.WriteLine(PacmanStartCoordinates.Item1);
+
             // Create Pacman
             Pacman pacman = new Pacman();
-            pacman.CreatePacmanImage(this);
-
-            // Initialise Board Matrix
-            gameboard.InitialiseBoardMatrix(Level);
+            pacman.CreatePacmanImage(this, PacmanStartCoordinates.Item1, PacmanStartCoordinates.Item2);
 
         }
     }

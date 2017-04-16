@@ -22,12 +22,14 @@ namespace Pacman
 
         }
 
-        public void CreatePacmanImage(Form formInstance)
+        public void CreatePacmanImage(Form formInstance, int StartXCoordinate, int StartYCoordinate)
         {
             // Create Pacman Image
+            int x = StartXCoordinate * 16 - 3;
+            int y = StartYCoordinate * 16 + 43;
             PacmanImage.Name = "PacmanImage";
             PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
-            PacmanImage.Location = new Point(0, 0);
+            PacmanImage.Location = new Point(x, y);
             PacmanImage.Image = Properties.Resources.Pacman_2_1;
             formInstance.Controls.Add(PacmanImage);
             PacmanImage.BringToFront();
