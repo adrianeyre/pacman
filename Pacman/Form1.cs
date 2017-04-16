@@ -15,6 +15,10 @@ namespace Pacman
         public Form1()
         {
             InitializeComponent();
+            Pacman pacman = new Pacman();
+            pacman.CreatePacmanImage(this);
+
+
         }
     }
 }

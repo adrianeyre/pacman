@@ -19,5 +19,17 @@ namespace Pacman
             Assert.AreEqual(0, pacman.yCoordinate);
             Assert.AreEqual(0, pacman.score);
         }
+
+        [Test]
+        public void CreatePacman()
+        {
+            Pacman pacman = new Pacman();
+            // Check default Pacman image has been created
+            pacman.CreatePacmanImage(new Form1());
+            Assert.AreNotEqual(null, pacman.PacmanImage.Image);
+            Assert.AreEqual(0, pacman.PacmanImage.Left);
+            Assert.AreEqual(0, pacman.PacmanImage.Top);
+            Assert.AreEqual("PacmanImage", pacman.PacmanImage.Name);
+        }
     }
 }
