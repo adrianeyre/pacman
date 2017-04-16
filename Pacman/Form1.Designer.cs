@@ -28,21 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.OneUPLabel = new System.Windows.Forms.TextBox();
+            this.HighScoreLabel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // OneUPLabel
+            // 
+            this.OneUPLabel.BackColor = System.Drawing.Color.Black;
+            this.OneUPLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.OneUPLabel.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.OneUPLabel.Font = new System.Drawing.Font("Folio XBd BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OneUPLabel.ForeColor = System.Drawing.Color.White;
+            this.OneUPLabel.Location = new System.Drawing.Point(37, 0);
+            this.OneUPLabel.Name = "OneUPLabel";
+            this.OneUPLabel.Size = new System.Drawing.Size(71, 23);
+            this.OneUPLabel.TabIndex = 0;
+            this.OneUPLabel.Text = "1 UP";
+            // 
+            // HighScoreLabel
+            // 
+            this.HighScoreLabel.BackColor = System.Drawing.Color.Black;
+            this.HighScoreLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HighScoreLabel.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.HighScoreLabel.Font = new System.Drawing.Font("Folio XBd BT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HighScoreLabel.ForeColor = System.Drawing.Color.White;
+            this.HighScoreLabel.Location = new System.Drawing.Point(2, 0);
+            this.HighScoreLabel.Name = "HighScoreLabel";
+            this.HighScoreLabel.Size = new System.Drawing.Size(447, 23);
+            this.HighScoreLabel.TabIndex = 1;
+            this.HighScoreLabel.Text = "HIGH SCORE";
+            this.HighScoreLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(449, 552);
+            this.ClientSize = new System.Drawing.Size(449, 593);
+            this.Controls.Add(this.OneUPLabel);
+            this.Controls.Add(this.HighScoreLabel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox OneUPLabel;
+        private System.Windows.Forms.TextBox HighScoreLabel;
     }
 }
 

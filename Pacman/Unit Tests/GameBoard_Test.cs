@@ -18,8 +18,16 @@ namespace Pacman
             GameBoard.CreateBoardImage(new Form1(),1);
             Assert.AreNotEqual(null, GameBoard.BoardImage.Image);
             Assert.AreEqual(0, GameBoard.BoardImage.Left);
-            Assert.AreEqual(25, GameBoard.BoardImage.Top);
+            Assert.AreEqual(50, GameBoard.BoardImage.Top);
             Assert.AreEqual("BoardImage", GameBoard.BoardImage.Name);
+        }
+
+        [Test]
+        public void GameBoardMatrixTest()
+        {
+            GameBoard GameBoard = new GameBoard();
+            // Check Board Matrix for start position
+            Assert.AreEqual(new Tuple<int,int> (9,17), GameBoard.InitialiseBoardMatrix(1));
         }
     }
 }
