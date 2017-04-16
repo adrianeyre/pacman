@@ -8,6 +8,10 @@ namespace Pacman
 {
     class Pacman
     {
+        public int xCoordinate = 0;
+        public int yCoordinate = 0;
+        public int score = 0;
+
 
     }
 }

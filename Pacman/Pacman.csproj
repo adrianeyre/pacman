@@ -56,8 +56,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacman.cs" />
-    <Compile Include="Pacman_Test.cs" />
+    <Compile Include="Classes\Pacman.cs" />
+    <Compile Include="Unit Tests\Pacman_Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
