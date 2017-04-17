@@ -23,7 +23,6 @@ namespace Pacman
             // Check default Food image has been created
             Assert.AreNotEqual(null, Food.FoodImage[1, 1].Image);
             Assert.AreEqual("FoodImage0", Food.FoodImage[1, 1].Name);
-            Assert.AreEqual(true, Food.FoodImage[1, 1].Visible);
         }
 
         [Test]
