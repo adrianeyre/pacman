@@ -85,7 +85,6 @@ namespace Pacman
                 PacmanImage.Image = PacmanImages.Images[((currentDirection - 1) * 4) + imageOn];
                 imageOn++;
                 if (imageOn > 3) { imageOn = 0; }
-                //PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
             }
         }
 

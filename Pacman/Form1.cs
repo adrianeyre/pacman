@@ -14,6 +14,7 @@ namespace Pacman
     {
         public static GameBoard gameboard = new GameBoard();
         private static Pacman pacman = new Pacman();
+        private static Food food = new Food();
 
         public Form1()
         {
@@ -29,11 +30,17 @@ namespace Pacman
             // Initialise Board Matrix
             Tuple<int, int> PacmanStartCoordinates = gameboard.InitialiseBoardMatrix(Level);
 
+            // Create Food
+            food.CreateFoodImages(this);
+
             // Create Pacman
             pacman.CreatePacmanImage(this, PacmanStartCoordinates.Item1, PacmanStartCoordinates.Item2);
 
-            this.BringToFront();
-            this.Activate();
+            
+
+
+            //this.BringToFront();
+            //this.Activate();
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
