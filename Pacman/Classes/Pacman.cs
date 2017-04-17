@@ -14,17 +14,42 @@ namespace Pacman
     {
         public int xCoordinate = 0;
         public int yCoordinate = 0;
-        public int score = 0;
         public int currentDirection = 0;
         public int nextDirection = 0;
         public PictureBox PacmanImage = new PictureBox();
+        public ImageList PacmanImages = new ImageList(); 
         public Timer timer = new Timer();
+
+        private int imageOn = 0;
 
         public Pacman()
         {
             timer.Interval = 100;
             timer.Enabled = true;
             timer.Tick += new EventHandler(timer_Tick);
+
+            PacmanImages.Images.Add(Properties.Resources.Pacman_1_0);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_1_1);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_1_2);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_1_3);
+
+            PacmanImages.Images.Add(Properties.Resources.Pacman_2_0);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_2_1);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_2_2);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_2_3);
+
+            PacmanImages.Images.Add(Properties.Resources.Pacman_3_0);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_3_1);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_3_2);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_3_3);
+
+            PacmanImages.Images.Add(Properties.Resources.Pacman_4_0);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_4_1);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_4_2);
+            PacmanImages.Images.Add(Properties.Resources.Pacman_4_3);
+
+            //PacmanImages.SizeMode = PictureBoxSizeMode.AutoSize;
+            PacmanImages.ImageSize = new Size(27,28);
         }
 
         public void CreatePacmanImage(Form formInstance, int StartXCoordinate, int StartYCoordinate)
@@ -57,6 +82,10 @@ namespace Pacman
                     case 4: PacmanImage.Left -= 16; xCoordinate--; break;
                 }
                 currentDirection = direction;
+                PacmanImage.Image = PacmanImages.Images[((currentDirection - 1) * 4) + imageOn];
+                imageOn++;
+                if (imageOn > 3) { imageOn = 0; }
+                //PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
             }
         }
 

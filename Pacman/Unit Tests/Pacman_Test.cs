@@ -17,7 +17,6 @@ namespace Pacman
             // Check default Pacman values
             Assert.AreEqual(0, pacman.xCoordinate);
             Assert.AreEqual(0, pacman.yCoordinate);
-            Assert.AreEqual(0, pacman.score);
             Assert.AreEqual(0, pacman.currentDirection);
             Assert.AreEqual(0, pacman.nextDirection);
         }
