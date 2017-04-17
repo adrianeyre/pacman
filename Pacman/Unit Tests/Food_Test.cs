@@ -26,6 +26,13 @@ namespace Pacman
         }
 
         [Test]
+        public void AmountOfFoodTest()
+        {
+            // Check amount of food
+            Assert.AreEqual(240, Food.Amount);
+        }
+
+        [Test]
         public void EatFoodTest()
         {
             // Eat food
