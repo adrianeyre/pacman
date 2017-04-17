@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    class Food
+    public class Food
     {
         public PictureBox[,] FoodImage = new PictureBox[30,27];
         //public PictureBox PacmanImage = new PictureBox();
@@ -22,7 +22,6 @@ namespace Pacman
             {
                 for (int x = 0; x < 27; x++)
                 {
-                    //Console.WriteLine(Form1.gameboard.Matrix[y, x]);
                     if (Form1.gameboard.Matrix[y,x] == 1)
                     {
                         FoodImage[y, x] = new PictureBox();
@@ -36,6 +35,12 @@ namespace Pacman
                     }
                 }
             }
+        }
+
+        public void EatFood(int x, int y)
+        {
+            // Eat food
+            FoodImage[x, y].Visible = false;
         }
     }
 }

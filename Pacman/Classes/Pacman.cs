@@ -12,6 +12,7 @@ namespace Pacman
 {
     class Pacman
     {
+        // Initialise variables
         public int xCoordinate = 0;
         public int yCoordinate = 0;
         public int currentDirection = 0;
@@ -48,7 +49,6 @@ namespace Pacman
             PacmanImages.Images.Add(Properties.Resources.Pacman_4_2);
             PacmanImages.Images.Add(Properties.Resources.Pacman_4_3);
 
-            //PacmanImages.SizeMode = PictureBoxSizeMode.AutoSize;
             PacmanImages.ImageSize = new Size(27,28);
         }
 
@@ -82,10 +82,25 @@ namespace Pacman
                     case 4: PacmanImage.Left -= 16; xCoordinate--; break;
                 }
                 currentDirection = direction;
-                PacmanImage.Image = PacmanImages.Images[((currentDirection - 1) * 4) + imageOn];
-                imageOn++;
-                if (imageOn > 3) { imageOn = 0; }
+                UpdatePacmanImage();
+                CheckPacmanPosition();
             }
+        }
+
+        private void CheckPacmanPosition()
+        {
+            // Check Pacmans position
+            switch (Form1.gameboard.Matrix[yCoordinate, xCoordinate])
+            {
+                case 1: Form1.food.EatFood(yCoordinate, xCoordinate); break;
+            }
+        }
+
+        private void UpdatePacmanImage()
+        {
+            PacmanImage.Image = PacmanImages.Images[((currentDirection - 1) * 4) + imageOn];
+            imageOn++;
+            if (imageOn > 3) { imageOn = 0; }
         }
 
         private bool check_direction(int direction)
