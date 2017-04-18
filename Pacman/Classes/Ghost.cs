@@ -13,32 +13,45 @@ namespace Pacman
     class Ghost
     {
         public int Amount = -1;
-        public ImageList GhostImages = new ImageList();
+        private ImageList GhostImages = new ImageList();
         public PictureBox[] GhostImage = new PictureBox[4];
-        
+        private Timer timer = new Timer();
+        private int[] xCoordinate = new int[4];
+        private int[] yCoordinate = new int[4];
+        private int[] Direction = new int[4];
+        private Random ran = new Random();
+
         public Ghost()
         {
             GhostImages.Images.Add(Properties.Resources.Ghost_0_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_0_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_0_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_0_4);
+            Direction[0] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_1_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_4);
+            Direction[1] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_2_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_4);
+            Direction[2] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_3_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_4);
+            Direction[3] = 0;
 
             GhostImages.ImageSize = new Size(27, 28);
+
+            timer.Interval = 100;
+            timer.Enabled = true;
+            timer.Tick += new EventHandler(timer_Tick);
         }
 
         public void CreateGhostImage(Form formInstance)
@@ -51,6 +64,8 @@ namespace Pacman
                     if (Form1.gameboard.Matrix[y, x] == 15)
                     {
                         Amount++;
+                        xCoordinate[Amount] = x;
+                        yCoordinate[Amount] = y;
                         GhostImage[Amount] = new PictureBox();
                         GhostImage[Amount].Name = "GhostImage" + Amount.ToString();
                         GhostImage[Amount].SizeMode = PictureBoxSizeMode.AutoSize;
@@ -60,6 +75,76 @@ namespace Pacman
                         GhostImage[Amount].BringToFront();
                     }
                 }
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            // Keep moving the ghosts
+            MoveGhosts();
+        }
+
+        private void MoveGhosts()
+        {
+            // Move the ghosts
+            for (int x=0; x<=Amount; x++)
+            {
+                if (Direction[x] == 0)
+                {
+                    if (ran.Next(0, 5) == 3) { Direction[x] = 1;}
+                }
+                else
+                {
+                    bool CanMove = false;
+                    while (!CanMove)
+                    {
+                        CanMove = check_direction(Direction[x], x);
+                        if (!CanMove) { Change_Direction(Direction[x],x); }
+                    }
+
+                    if (CanMove)
+                    {
+                        switch (Direction[x])
+                        {
+                            case 1: GhostImage[x].Top -= 16; yCoordinate[x]--; break;
+                            case 2: GhostImage[x].Left += 16; xCoordinate[x]++; break;
+                            case 3: GhostImage[x].Top += 16; yCoordinate[x]++; break;
+                            case 4: GhostImage[x].Left -= 16; xCoordinate[x]--; break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool check_direction(int direction, int ghost)
+        {
+            // Check if pacman can move to space
+            switch (direction)
+            {
+                case 1: return direction_ok(xCoordinate[ghost], yCoordinate[ghost] - 1, ghost);
+                case 2: return direction_ok(xCoordinate[ghost] + 1, yCoordinate[ghost], ghost);
+                case 3: return direction_ok(xCoordinate[ghost], yCoordinate[ghost] + 1, ghost);
+                case 4: return direction_ok(xCoordinate[ghost] - 1, yCoordinate[ghost], ghost);
+                default: return false;
+            }
+        }
+
+        private bool direction_ok(int x, int y, int ghost)
+        {
+            // Check if board space can be used
+            if (x < 0) { xCoordinate[ghost] = 27; GhostImage[ghost].Left = 429; return true; }
+            if (x > 27) { xCoordinate[ghost] = 0; GhostImage[ghost].Left = -5; return true; }
+            if (Form1.gameboard.Matrix[y, x] < 4 || Form1.gameboard.Matrix[y, x] > 10) { return true; } else { return false; }
+        }
+
+        private void Change_Direction(int direction, int ghost)
+        {
+            // Change the direction of the ghost
+            int which = ran.Next(0, 2);
+            switch (direction)
+            {
+                case 1: case 3: if (which == 1) { Direction[ghost] = 2; } else { Direction[ghost] = 4; }; break;
+                case 2: case 4: if (which == 1) { Direction[ghost] = 1; } else { Direction[ghost] = 3; }; break;
             }
         }
     }

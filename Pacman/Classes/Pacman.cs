@@ -18,8 +18,8 @@ namespace Pacman
         public int currentDirection = 0;
         public int nextDirection = 0;
         public PictureBox PacmanImage = new PictureBox();
-        public ImageList PacmanImages = new ImageList(); 
-        public Timer timer = new Timer();
+        private ImageList PacmanImages = new ImageList(); 
+        private Timer timer = new Timer();
 
         private int imageOn = 0;
 
