@@ -49,5 +49,11 @@ namespace Pacman
             // Eat food
             FoodImage[x, y].Visible = false;
         }
+
+        public void EatSuperFood(int x, int y)
+        {
+            // Eat food
+            FoodImage[x, y].Visible = false;
+        }
     }
 }

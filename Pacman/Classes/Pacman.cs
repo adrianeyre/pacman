@@ -93,6 +93,7 @@ namespace Pacman
             switch (Form1.gameboard.Matrix[yCoordinate, xCoordinate])
             {
                 case 1: Form1.food.EatFood(yCoordinate, xCoordinate); break;
+                case 2: Form1.food.EatSuperFood(yCoordinate, xCoordinate); break;
             }
         }
 
