@@ -96,6 +96,8 @@ namespace Pacman
                 else
                 {
                     bool CanMove = false;
+                    Other_Direction(Direction[x], x);
+
                     while (!CanMove)
                     {
                         CanMove = check_direction(Direction[x], x);
@@ -146,6 +148,21 @@ namespace Pacman
                 case 1: case 3: if (which == 1) { Direction[ghost] = 2; } else { Direction[ghost] = 4; }; break;
                 case 2: case 4: if (which == 1) { Direction[ghost] = 1; } else { Direction[ghost] = 3; }; break;
             }
+        }
+
+        private void Other_Direction(int direction, int ghost)
+        {
+            // Check to see if the ghost can move a different direction
+            bool[] directions = new bool[5];
+            int x = xCoordinate[ghost];
+            int y = yCoordinate[ghost];
+            switch (direction)
+            {
+                case 1: case 3: directions[2] = direction_ok(x + 1, y, ghost); directions[4] = direction_ok(x - 1, y, ghost); break;
+                case 2: case 4: directions[1] = direction_ok(x, y - 1, ghost); directions[3] = direction_ok(x, y + 1, ghost); break;
+            }
+            int which = ran.Next(0, 5);
+            if (directions[which] == true) { Direction[ghost] = which; }
         }
     }
 }
