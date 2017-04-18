@@ -119,7 +119,7 @@ namespace Pacman
         private bool direction_ok(int x, int y)
         {
             // Check if board space can be used
-            if (x < 0) { xCoordinate = 26; PacmanImage.Left = 413; return true ; }
+            if (x < 0) { xCoordinate = 27; PacmanImage.Left = 429; return true ; }
             if (x > 27) { xCoordinate = 0; PacmanImage.Left = -5; return true; }
             if (Form1.gameboard.Matrix[y, x] < 4) { return true; } else { return false; }
         }
