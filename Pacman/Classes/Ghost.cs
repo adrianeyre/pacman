@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    class Ghost
+    public class Ghost
     {
-        public int Amount = -1;
+        public int Ghosts = 4;
         private ImageList GhostImages = new ImageList();
         public PictureBox[] GhostImage = new PictureBox[4];
         private Timer timer = new Timer();
@@ -57,6 +57,20 @@ namespace Pacman
         public void CreateGhostImage(Form formInstance)
         {
             // Create Ghost Image
+            for (int x=0; x<Ghosts; x++)
+            {
+                GhostImage[x] = new PictureBox();
+                GhostImage[x].Name = "GhostImage" + x.ToString();
+                GhostImage[x].SizeMode = PictureBoxSizeMode.AutoSize;
+                formInstance.Controls.Add(GhostImage[x]);
+                GhostImage[x].BringToFront();
+            }
+            Set_Ghosts();
+        }
+
+        public void Set_Ghosts()
+        {
+            int Amount = -1;
             for (int y = 0; y < 30; y++)
             {
                 for (int x = 0; x < 27; x++)
@@ -66,13 +80,8 @@ namespace Pacman
                         Amount++;
                         xCoordinate[Amount] = x;
                         yCoordinate[Amount] = y;
-                        GhostImage[Amount] = new PictureBox();
-                        GhostImage[Amount].Name = "GhostImage" + Amount.ToString();
-                        GhostImage[Amount].SizeMode = PictureBoxSizeMode.AutoSize;
                         GhostImage[Amount].Location = new Point(x * 16 - 3, y * 16 + 43);
                         GhostImage[Amount].Image = GhostImages.Images[Amount * 4];
-                        formInstance.Controls.Add(GhostImage[Amount]);
-                        GhostImage[Amount].BringToFront();
                     }
                 }
             }
@@ -87,7 +96,7 @@ namespace Pacman
         private void MoveGhosts()
         {
             // Move the ghosts
-            for (int x=0; x<=Amount; x++)
+            for (int x=0; x<Ghosts; x++)
             {
                 if (Direction[x] == 0)
                 {
@@ -113,6 +122,7 @@ namespace Pacman
                             case 3: GhostImage[x].Top += 16; yCoordinate[x]++; break;
                             case 4: GhostImage[x].Left -= 16; xCoordinate[x]--; break;
                         }
+                        if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate) { Form1.player.LooseLife(); }
                     }
                 }
             }
@@ -120,7 +130,7 @@ namespace Pacman
 
         private bool check_direction(int direction, int ghost)
         {
-            // Check if pacman can move to space
+            // Check if ghost can move to space
             switch (direction)
             {
                 case 1: return direction_ok(xCoordinate[ghost], yCoordinate[ghost] - 1, ghost);

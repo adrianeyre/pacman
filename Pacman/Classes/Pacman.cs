@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Pacman
 {
-    class Pacman
+    public class Pacman
     {
         // Initialise variables
         public int xCoordinate = 0;
         public int yCoordinate = 0;
+        private int xStart = 0;
+        private int yStart = 0;
         public int currentDirection = 0;
         public int nextDirection = 0;
         public PictureBox PacmanImage = new PictureBox();
@@ -55,11 +57,11 @@ namespace Pacman
         public void CreatePacmanImage(Form formInstance, int StartXCoordinate, int StartYCoordinate)
         {
             // Create Pacman Image
-            xCoordinate = StartXCoordinate;
-            yCoordinate = StartYCoordinate;
+            xStart = StartXCoordinate;
+            yStart = StartYCoordinate;
             PacmanImage.Name = "PacmanImage";
             PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
-            PacmanImage.Location = new Point(StartXCoordinate * 16 - 3, StartYCoordinate * 16 + 43);
+            Set_Pacman();
             PacmanImage.Image = Properties.Resources.Pacman_2_1;
             formInstance.Controls.Add(PacmanImage);
             PacmanImage.BringToFront();
@@ -84,6 +86,15 @@ namespace Pacman
                 currentDirection = direction;
                 UpdatePacmanImage();
                 CheckPacmanPosition();
+                CheckForGhosts();
+            }
+        }
+
+        private void CheckForGhosts()
+        {
+            for (int x=0; x < Form1.ghost.Ghosts; x++)
+            {
+                if (xCoordinate==Form1.ghost.xCoordinate[x] && yCoordinate == Form1.ghost.yCoordinate[x]) { Form1.player.LooseLife(); }
             }
         }
 
@@ -99,6 +110,7 @@ namespace Pacman
 
         private void UpdatePacmanImage()
         {
+            // Update Pacman image
             PacmanImage.Image = PacmanImages.Images[((currentDirection - 1) * 4) + imageOn];
             imageOn++;
             if (imageOn > 3) { imageOn = 0; }
@@ -129,6 +141,14 @@ namespace Pacman
         {
             // Keep moving pacman
             MovePacman(currentDirection);
+        }
+
+        public void Set_Pacman()
+        {
+            // Place Pacman in board
+            xCoordinate = xStart;
+            yCoordinate = yStart;
+            PacmanImage.Location = new Point(xStart * 16 - 3, yStart * 16 + 43);
         }
     }
 }

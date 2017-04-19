@@ -68,7 +68,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(449, 593);
+            this.ClientSize = new System.Drawing.Size(449, 581);
             this.Controls.Add(this.OneUPLabel);
             this.Controls.Add(this.HighScoreLabel);
             this.Name = "Form1";

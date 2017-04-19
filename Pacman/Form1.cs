@@ -14,8 +14,8 @@ namespace Pacman
     {
         public static GameBoard gameboard = new GameBoard();
         public static Food food = new Food();
-        private static Pacman pacman = new Pacman();
-        private static Ghost ghost = new Ghost();
+        public static Pacman pacman = new Pacman();
+        public static Ghost ghost = new Ghost();
         public static Player player = new Player();
 
         public Form1()
@@ -34,6 +34,7 @@ namespace Pacman
 
             // Create Player
             player.CreatePlayerDetails(this);
+            player.CreateLives(this);
 
             // Create Food
             food.CreateFoodImages(this);

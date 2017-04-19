@@ -4,13 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Pacman
 {
     public class Player
     {
+        private const int MaxLives = 10;
         public int Score = 0;
+        public int Lives = 3;
         public Label ScoreText = new Label();
+        public PictureBox[] LifeImage = new PictureBox[MaxLives];
+
+        public void CreateLives(Form formInstance)
+        {
+            for(int x = 0; x < MaxLives; x++)
+            {
+                LifeImage[x] = new PictureBox();
+                LifeImage[x].Name = "Life" + x.ToString();
+                LifeImage[x].SizeMode = PictureBoxSizeMode.AutoSize;
+                LifeImage[x].Location = new Point(x * 30 + 3, 550);
+                LifeImage[x].Image = Properties.Resources.Life;
+                formInstance.Controls.Add(LifeImage[x]);
+                LifeImage[x].BringToFront();
+            }
+            SetLives();
+        }
 
         public void CreatePlayerDetails(Form formInstance)
         {
@@ -30,6 +49,29 @@ namespace Pacman
         {
             Score += amount;
             ScoreText.Text = Score.ToString();
+        }
+
+        public void SetLives()
+        {
+            for (int x=0; x<Lives; x++)
+            {
+                LifeImage[x].Visible = true;
+            }
+            for (int x = Lives; x < MaxLives; x++)
+            {
+                LifeImage[x].Visible = false;
+            }
+        }
+
+        public void LooseLife()
+        {
+            Lives--;
+            if (Lives >= 0)
+            {
+                Form1.pacman.Set_Pacman();
+                Form1.ghost.Set_Ghosts();
+                SetLives();
+            }
         }
     }
 }
