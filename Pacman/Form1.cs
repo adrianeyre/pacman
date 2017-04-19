@@ -16,7 +16,7 @@ namespace Pacman
         public static Food food = new Food();
         private static Pacman pacman = new Pacman();
         private static Ghost ghost = new Ghost();
-        private static Player player = new Player();
+        public static Player player = new Player();
 
         public Form1()
         {

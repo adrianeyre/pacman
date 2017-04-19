@@ -15,6 +15,9 @@ namespace Pacman
         public PictureBox[,] FoodImage = new PictureBox[30,27];
         public int Amount = 0;
 
+        private const int FoodScore = 10;
+        private const int SuperFoodScore = 50;
+
         public void CreateFoodImages(Form formInstance)
         {
             for (int y = 0; y < 30; y++)
@@ -48,12 +51,16 @@ namespace Pacman
         {
             // Eat food
             FoodImage[x, y].Visible = false;
+            Form1.gameboard.Matrix[x, y] = 0;
+            Form1.player.UpdateScore(FoodScore);
         }
 
         public void EatSuperFood(int x, int y)
         {
             // Eat food
             FoodImage[x, y].Visible = false;
+            Form1.gameboard.Matrix[x, y] = 0;
+            Form1.player.UpdateScore(SuperFoodScore);
         }
     }
 }
