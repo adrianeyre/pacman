@@ -13,7 +13,7 @@ namespace Pacman
     [TestFixture]
     public class GameBoard_Test
     {
-        public GameBoard GameBoard = new GameBoard();
+        private GameBoard GameBoard = new GameBoard();
 
         [Test]
         public void NewGameBoardTest()
@@ -29,7 +29,6 @@ namespace Pacman
         [Test]
         public void GameBoardMatrixTest()
         {
-            //GameBoard GameBoard = new GameBoard();
             // Check Board Matrix for start position
             Assert.AreEqual(new Tuple<int,int> (9,17), GameBoard.InitialiseBoardMatrix(1));
         }

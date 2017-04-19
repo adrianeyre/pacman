@@ -16,7 +16,6 @@ namespace Pacman
         [Test]
         public void NewPacmanTest()
         {
-            //Pacman pacman = new Pacman();
             // Check default Pacman values
             Assert.AreEqual(0, pacman.xCoordinate);
             Assert.AreEqual(0, pacman.yCoordinate);
@@ -27,7 +26,6 @@ namespace Pacman
         [Test]
         public void CreatePacmanTest()
         {
-            //Pacman pacman = new Pacman();
             // Check default Pacman image has been created
             pacman.CreatePacmanImage(new Form(),0,0);
             Assert.AreNotEqual(null, pacman.PacmanImage.Image);

@@ -10,12 +10,11 @@ namespace Pacman
     [TestFixture]
     public class Player_Test
     {
-
+        private Player player = new Player();
         [Test]
         public void NewPlayerTest()
         {
             // Check default Player
-            Player player = new Player();
             Assert.AreEqual(0, player.Score);
         }
 
