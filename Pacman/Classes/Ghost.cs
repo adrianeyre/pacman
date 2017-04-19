@@ -16,9 +16,9 @@ namespace Pacman
         private ImageList GhostImages = new ImageList();
         public PictureBox[] GhostImage = new PictureBox[4];
         private Timer timer = new Timer();
-        private int[] xCoordinate = new int[4];
-        private int[] yCoordinate = new int[4];
-        private int[] Direction = new int[4];
+        public int[] xCoordinate = new int[4];
+        public int[] yCoordinate = new int[4];
+        public int[] Direction = new int[4];
         private Random ran = new Random();
 
         public Ghost()
