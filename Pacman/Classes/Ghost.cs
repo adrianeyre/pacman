@@ -241,7 +241,7 @@ namespace Pacman
                 {
                     if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate)
                     {
-                        Form1.player.LooseLife();
+                        Form1.player.LoseLife();
                     }
                 }
             }

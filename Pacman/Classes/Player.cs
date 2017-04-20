@@ -47,6 +47,7 @@ namespace Pacman
 
         public void UpdateScore(int amount = 1)
         {
+            // Update score value and text
             Score += amount;
             ScoreText.Text = Score.ToString();
             if (Score > Form1.highscore.Score) { Form1.highscore.UpdateHighScore(Score); }
@@ -54,6 +55,7 @@ namespace Pacman
 
         public void SetLives()
         {
+            // Display lives in form
             for (int x=0; x<Lives+1; x++)
             {
                 LifeImage[x].Visible = true;
@@ -64,8 +66,9 @@ namespace Pacman
             }
         }
 
-        public void LooseLife()
+        public void LoseLife()
         {
+            // Lose a life
             Lives--;
             if (Lives > 0)
             {
