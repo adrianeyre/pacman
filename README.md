@@ -18,4 +18,4 @@ $ cd pacman
 * Click `Start`
 
 ## <a name="Shots">Screen Shots</a>
-[![Screenshot](https://raw.githubusercontent.com/adrianeyre/treasure-hunt/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/treasure-hunt/master/images/screenshot1.png "Game View")
+[![Screenshot](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot1.png "Game View")
