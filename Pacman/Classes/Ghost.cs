@@ -123,6 +123,7 @@ namespace Pacman
                             case 4: GhostImage[x].Left -= 16; xCoordinate[x]--; break;
                         }
                         if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate) { Form1.player.LooseLife(); }
+                        GhostImage[x].Image = GhostImages.Images[x * 4 + (Direction[x] - 1)];
                     }
                 }
             }
