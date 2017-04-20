@@ -144,7 +144,6 @@ namespace Pacman
                             case 3: GhostImage[x].Top += 16; yCoordinate[x]++; break;
                             case 4: GhostImage[x].Left -= 16; xCoordinate[x]--; break;
                         }
-                        Console.WriteLine(GhostImage[x].Image.ToString());
                         switch (State[x])
                         {
                             case 0: GhostImage[x].Image = GhostImages.Images[x * 4 + (Direction[x] - 1)]; break;
@@ -212,6 +211,7 @@ namespace Pacman
 
         public void ChangeGhostState()
         {
+            // Change the state off all of the ghosts so that they can be eaten
             for (int x=0; x<GhostAmount; x++)
             {
                 State[x] = 1;
@@ -222,6 +222,7 @@ namespace Pacman
 
         public void CheckForPacman()
         {
+            // Check to see if a ghost is on the same block as Pacman
             for (int x = 0; x < GhostAmount; x++)
             {
                 if (State[x] == 0)
