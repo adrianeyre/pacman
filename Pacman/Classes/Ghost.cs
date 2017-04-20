@@ -110,7 +110,8 @@ namespace Pacman
                     while (!CanMove)
                     {
                         CanMove = check_direction(Direction[x], x);
-                        if (!CanMove) { Change_Direction(Direction[x],x); }
+                        if (!CanMove) { Change_Direction(Direction[x], x); }
+
                     }
 
                     if (CanMove)
@@ -164,16 +165,19 @@ namespace Pacman
         private void Other_Direction(int direction, int ghost)
         {
             // Check to see if the ghost can move a different direction
-            bool[] directions = new bool[5];
-            int x = xCoordinate[ghost];
-            int y = yCoordinate[ghost];
-            switch (direction)
+            if (Form1.gameboard.Matrix[yCoordinate[ghost], xCoordinate[ghost]] < 4)
             {
-                case 1: case 3: directions[2] = direction_ok(x + 1, y, ghost); directions[4] = direction_ok(x - 1, y, ghost); break;
-                case 2: case 4: directions[1] = direction_ok(x, y - 1, ghost); directions[3] = direction_ok(x, y + 1, ghost); break;
+                bool[] directions = new bool[5];
+                int x = xCoordinate[ghost];
+                int y = yCoordinate[ghost];
+                switch (direction)
+                {
+                    case 1: case 3: directions[2] = direction_ok(x + 1, y, ghost); directions[4] = direction_ok(x - 1, y, ghost); break;
+                    case 2: case 4: directions[1] = direction_ok(x, y - 1, ghost); directions[3] = direction_ok(x, y + 1, ghost); break;
+                }
+                int which = ran.Next(0, 5);
+                if (directions[which] == true) { Direction[ghost] = which; }
             }
-            int which = ran.Next(0, 5);
-            if (directions[which] == true) { Direction[ghost] = which; }
         }
     }
 }
