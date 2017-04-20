@@ -86,15 +86,7 @@ namespace Pacman
                 currentDirection = direction;
                 UpdatePacmanImage();
                 CheckPacmanPosition();
-                CheckForGhosts();
-            }
-        }
-
-        private void CheckForGhosts()
-        {
-            for (int x=0; x < Form1.ghost.Ghosts; x++)
-            {
-                if (xCoordinate==Form1.ghost.xCoordinate[x] && yCoordinate == Form1.ghost.yCoordinate[x]) { Form1.player.LooseLife(); }
+                Form1.ghost.CheckForPacman();
             }
         }
 

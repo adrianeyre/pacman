@@ -12,14 +12,19 @@ namespace Pacman
 {
     public class Ghost
     {
-        public int Ghosts = 4;
+        private const int GhostAmount = 4;
+
+        public int Ghosts = GhostAmount;
         private ImageList GhostImages = new ImageList();
-        public PictureBox[] GhostImage = new PictureBox[4];
+        public PictureBox[] GhostImage = new PictureBox[GhostAmount];
+        public int[] State = new int[GhostAmount];
         private Timer timer = new Timer();
-        public int[] xCoordinate = new int[4];
-        public int[] yCoordinate = new int[4];
-        public int[] Direction = new int[4];
+        private Timer statetimer = new Timer();
+        public int[] xCoordinate = new int[GhostAmount];
+        public int[] yCoordinate = new int[GhostAmount];
+        public int[] Direction = new int[GhostAmount];
         private Random ran = new Random();
+        private bool GhostOn = false;
 
         public Ghost()
         {
@@ -27,31 +32,35 @@ namespace Pacman
             GhostImages.Images.Add(Properties.Resources.Ghost_0_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_0_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_0_4);
-            Direction[0] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_1_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_1_4);
-            Direction[1] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_2_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_2_4);
-            Direction[2] = 0;
 
             GhostImages.Images.Add(Properties.Resources.Ghost_3_1);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_2);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_3);
             GhostImages.Images.Add(Properties.Resources.Ghost_3_4);
-            Direction[3] = 0;
+
+            GhostImages.Images.Add(Properties.Resources.Ghost_4);
+            GhostImages.Images.Add(Properties.Resources.Ghost_5);
+            GhostImages.Images.Add(Properties.Resources.eyes);
 
             GhostImages.ImageSize = new Size(27, 28);
 
             timer.Interval = 100;
             timer.Enabled = true;
             timer.Tick += new EventHandler(timer_Tick);
+
+            statetimer.Interval = 10000;
+            statetimer.Enabled = false;
+            statetimer.Tick += new EventHandler(statetimer_Tick);
         }
 
         public void CreateGhostImage(Form formInstance)
@@ -82,6 +91,8 @@ namespace Pacman
                         yCoordinate[Amount] = y;
                         GhostImage[Amount].Location = new Point(x * 16 - 3, y * 16 + 43);
                         GhostImage[Amount].Image = GhostImages.Images[Amount * 4];
+                        Direction[Amount] = 0;
+                        State[Amount] = 0;
                     }
                 }
             }
@@ -91,6 +102,16 @@ namespace Pacman
         {
             // Keep moving the ghosts
             MoveGhosts();
+        }
+
+        private void statetimer_Tick(object sender, EventArgs e)
+        {
+            // Turn Ghosts back
+            for (int x=0; x<GhostAmount; x++)
+            {
+                State[x] = 0;
+            }
+            statetimer.Enabled = false;
         }
 
         private void MoveGhosts()
@@ -123,11 +144,20 @@ namespace Pacman
                             case 3: GhostImage[x].Top += 16; yCoordinate[x]++; break;
                             case 4: GhostImage[x].Left -= 16; xCoordinate[x]--; break;
                         }
-                        if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate) { Form1.player.LooseLife(); }
-                        GhostImage[x].Image = GhostImages.Images[x * 4 + (Direction[x] - 1)];
+                        Console.WriteLine(GhostImage[x].Image.ToString());
+                        switch (State[x])
+                        {
+                            case 0: GhostImage[x].Image = GhostImages.Images[x * 4 + (Direction[x] - 1)]; break;
+                            case 1:
+                                if (GhostOn) { GhostImage[x].Image = GhostImages.Images[17];} else { GhostImage[x].Image = GhostImages.Images[16]; };
+                                break;
+                            case 2: GhostImage[x].Image = GhostImages.Images[18]; break;
+                        } 
                     }
                 }
             }
+            GhostOn = !GhostOn;
+            CheckForPacman();
         }
 
         private bool check_direction(int direction, int ghost)
@@ -177,6 +207,30 @@ namespace Pacman
                 }
                 int which = ran.Next(0, 5);
                 if (directions[which] == true) { Direction[ghost] = which; }
+            }
+        }
+
+        public void ChangeGhostState()
+        {
+            for (int x=0; x<GhostAmount; x++)
+            {
+                State[x] = 1;
+                GhostImage[x].Image = GhostImages.Images[16];
+            }
+            statetimer.Enabled = true;
+        }
+
+        public void CheckForPacman()
+        {
+            for (int x = 0; x < GhostAmount; x++)
+            {
+                if (State[x] == 0)
+                {
+                    if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate)
+                    {
+                        Form1.player.LooseLife();
+                    }
+                }
             }
         }
     }

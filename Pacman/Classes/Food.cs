@@ -61,6 +61,7 @@ namespace Pacman
             FoodImage[x, y].Visible = false;
             Form1.gameboard.Matrix[x, y] = 0;
             Form1.player.UpdateScore(SuperFoodScore);
+            Form1.ghost.ChangeGhostState();
         }
     }
 }
