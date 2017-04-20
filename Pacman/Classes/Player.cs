@@ -70,7 +70,7 @@ namespace Pacman
             if (Lives > 0)
             {
                 Form1.pacman.Set_Pacman();
-                Form1.ghost.Set_Ghosts();
+                Form1.ghost.ResetGhosts();
                 SetLives();
             }
             else

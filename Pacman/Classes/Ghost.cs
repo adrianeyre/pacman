@@ -22,6 +22,8 @@ namespace Pacman
         private Timer statetimer = new Timer();
         public int[] xCoordinate = new int[GhostAmount];
         public int[] yCoordinate = new int[GhostAmount];
+        private int[] xStart = new int[GhostAmount];
+        private int[] yStart = new int[GhostAmount];
         public int[] Direction = new int[GhostAmount];
         private Random ran = new Random();
         private bool GhostOn = false;
@@ -75,6 +77,7 @@ namespace Pacman
                 GhostImage[x].BringToFront();
             }
             Set_Ghosts();
+            ResetGhosts();
         }
 
         public void Set_Ghosts()
@@ -87,14 +90,23 @@ namespace Pacman
                     if (Form1.gameboard.Matrix[y, x] == 15)
                     {
                         Amount++;
-                        xCoordinate[Amount] = x;
-                        yCoordinate[Amount] = y;
-                        GhostImage[Amount].Location = new Point(x * 16 - 3, y * 16 + 43);
-                        GhostImage[Amount].Image = GhostImages.Images[Amount * 4];
-                        Direction[Amount] = 0;
-                        State[Amount] = 0;
+                        xStart[Amount] = x;
+                        yStart[Amount] = y;
                     }
                 }
+            }
+        }
+
+        public void ResetGhosts()
+        {
+            for (int x=0; x<GhostAmount; x++)
+            {
+                xCoordinate[x] = xStart[x];
+                yCoordinate[x] = yStart[x];
+                GhostImage[x].Location = new Point(xStart[x] * 16 - 3, yStart[x] * 16 + 43);
+                GhostImage[x].Image = GhostImages.Images[x * 4];
+                Direction[x] = 0;
+                State[x] = 0;
             }
         }
 
