@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Food.cs" />
+    <Compile Include="Classes\FormElements.cs" />
     <Compile Include="Classes\GameBoard.cs" />
     <Compile Include="Classes\Ghost.cs" />
+    <Compile Include="Classes\HighScore.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -62,8 +64,10 @@
     </Compile>
     <Compile Include="Classes\Pacman.cs" />
     <Compile Include="Unit Tests\Food_Test.cs" />
+    <Compile Include="Unit Tests\FormElements_Test.cs" />
     <Compile Include="Unit Tests\GameBoard_Test.cs" />
     <Compile Include="Unit Tests\Ghost_Test.cs" />
+    <Compile Include="Unit Tests\HighScore_Test.cs" />
     <Compile Include="Unit Tests\Pacman_Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

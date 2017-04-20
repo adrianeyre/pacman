@@ -17,6 +17,8 @@ namespace Pacman
         public static Pacman pacman = new Pacman();
         public static Ghost ghost = new Ghost();
         public static Player player = new Player();
+        public static HighScore highscore = new HighScore();
+        private static FormElements formelements = new FormElements();
 
         public Form1()
         {
@@ -35,6 +37,12 @@ namespace Pacman
             // Create Player
             player.CreatePlayerDetails(this);
             player.CreateLives(this);
+
+            // Create Form Elements
+            formelements.CreateFormElements(this);
+
+            // Create High Score
+            highscore.CreateHighScore(this);
 
             // Create Food
             food.CreateFoodImages(this);

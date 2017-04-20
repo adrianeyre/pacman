@@ -62,7 +62,7 @@ namespace Pacman
             PacmanImage.Name = "PacmanImage";
             PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
             Set_Pacman();
-            PacmanImage.Image = Properties.Resources.Pacman_2_1;
+            //PacmanImage.Image = Properties.Resources.Pacman_2_1;
             formInstance.Controls.Add(PacmanImage);
             PacmanImage.BringToFront();
         }
@@ -146,6 +146,9 @@ namespace Pacman
         public void Set_Pacman()
         {
             // Place Pacman in board
+            PacmanImage.Image = Properties.Resources.Pacman_2_1;
+            currentDirection = 0;
+            nextDirection = 0;
             xCoordinate = xStart;
             yCoordinate = yStart;
             PacmanImage.Location = new Point(xStart * 16 - 3, yStart * 16 + 43);

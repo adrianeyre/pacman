@@ -49,15 +49,16 @@ namespace Pacman
         {
             Score += amount;
             ScoreText.Text = Score.ToString();
+            if (Score > Form1.highscore.Score) { Form1.highscore.UpdateHighScore(Score); }
         }
 
         public void SetLives()
         {
-            for (int x=0; x<Lives; x++)
+            for (int x=0; x<Lives+1; x++)
             {
                 LifeImage[x].Visible = true;
             }
-            for (int x = Lives; x < MaxLives; x++)
+            for (int x = Lives-1; x < MaxLives; x++)
             {
                 LifeImage[x].Visible = false;
             }
@@ -66,11 +67,15 @@ namespace Pacman
         public void LooseLife()
         {
             Lives--;
-            if (Lives >= 0)
+            if (Lives > 0)
             {
                 Form1.pacman.Set_Pacman();
                 Form1.ghost.Set_Ghosts();
                 SetLives();
+            }
+            else
+            {
+                Application.Exit();
             }
         }
     }
