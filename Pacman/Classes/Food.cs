@@ -55,6 +55,7 @@ namespace Pacman
             Form1.player.UpdateScore(FoodScore);
             Amount--;
             if (Amount < 1) { Form1.player.LevelComplete(); }
+            Form1.audio.Play(1);
         }
 
         public void EatSuperFood(int x, int y)

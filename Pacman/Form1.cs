@@ -18,6 +18,7 @@ namespace Pacman
         public static Ghost ghost = new Ghost();
         public static Player player = new Player();
         public static HighScore highscore = new HighScore();
+        public static Audio audio = new Audio();
         private static FormElements formelements = new FormElements();
 
         public Form1()

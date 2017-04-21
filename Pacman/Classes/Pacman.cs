@@ -62,7 +62,6 @@ namespace Pacman
             PacmanImage.Name = "PacmanImage";
             PacmanImage.SizeMode = PictureBoxSizeMode.AutoSize;
             Set_Pacman();
-            //PacmanImage.Image = Properties.Resources.Pacman_2_1;
             formInstance.Controls.Add(PacmanImage);
             PacmanImage.BringToFront();
         }
