@@ -21,3 +21,5 @@ $ cd pacman
 [![Screenshot](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot1.png "Game View")
 
 [![Screenshot](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot2.png "Game View")
+
+[![Screenshot](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/pacman/master/images/screenshot3.png "Game View")
