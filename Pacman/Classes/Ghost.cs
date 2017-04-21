@@ -229,7 +229,9 @@ namespace Pacman
                 State[x] = 1;
                 GhostImage[x].Image = GhostImages.Images[16];
             }
+            statetimer.Stop();
             statetimer.Enabled = true;
+            statetimer.Start();
         }
 
         public void CheckForPacman()
@@ -237,14 +239,22 @@ namespace Pacman
             // Check to see if a ghost is on the same block as Pacman
             for (int x = 0; x < GhostAmount; x++)
             {
-                if (State[x] == 0)
+                if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate)
                 {
-                    if (xCoordinate[x] == Form1.pacman.xCoordinate && yCoordinate[x] == Form1.pacman.yCoordinate)
+                    switch (State[x])
                     {
-                        Form1.player.LoseLife();
+                        case 0: Form1.player.LoseLife(); break;
+                        case 1: EatGhost(x); break;
                     }
                 }
             }
         }
+
+        private void EatGhost(int ghost)
+        {
+            // Eat Ghost
+            
+        }
+
     }
 }
