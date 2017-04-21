@@ -249,12 +249,5 @@ namespace Pacman
                 }
             }
         }
-
-        private void EatGhost(int ghost)
-        {
-            // Eat Ghost
-            
-        }
-
     }
 }

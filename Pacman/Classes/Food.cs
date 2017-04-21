@@ -53,6 +53,8 @@ namespace Pacman
             FoodImage[x, y].Visible = false;
             Form1.gameboard.Matrix[x, y] = 0;
             Form1.player.UpdateScore(FoodScore);
+            Amount--;
+            if (Amount < 1) { Form1.player.LevelComplete(); }
         }
 
         public void EatSuperFood(int x, int y)

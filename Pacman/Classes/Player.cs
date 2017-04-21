@@ -81,5 +81,10 @@ namespace Pacman
                 Application.Exit();
             }
         }
+
+        public void LevelComplete()
+        {
+            Application.Exit();
+        }
     }
 }
