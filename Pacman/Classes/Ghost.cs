@@ -163,7 +163,7 @@ namespace Pacman
                                 if (GhostOn) { GhostImage[x].Image = GhostImages.Images[17];} else { GhostImage[x].Image = GhostImages.Images[16]; };
                                 break;
                             case 2: GhostImage[x].Image = GhostImages.Images[18]; break;
-                        } 
+                        }
                     }
                 }
             }
@@ -244,7 +244,7 @@ namespace Pacman
                     switch (State[x])
                     {
                         case 0: Form1.player.LoseLife(); break;
-                        case 1: EatGhost(x); break;
+                        case 1: State[x] = 2; break;
                     }
                 }
             }

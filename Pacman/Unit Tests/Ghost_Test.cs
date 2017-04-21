@@ -4,21 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pacman
 {
     [TestFixture]
     public class Ghost_Test
     {
+        private Ghost Ghost = new Ghost();
+
+        public Ghost_Test()
+        {
+            Ghost.CreateGhostImage(new Form());
+        }
 
         [Test]
         public void NewGhostTest()
         {
-            // Check default Food image has been created
-            Ghost Ghost = new Ghost();
-
-            //Assert.AreNotEqual(null, Food.FoodImage[1, 1].Image);
-            //Assert.AreEqual("FoodImage0", Food.FoodImage[1, 1].Name);
+            // Check default Ghost image has been created
+            Assert.AreNotEqual(null, Ghost.GhostImage[0].Image);
         }
     }
 }
