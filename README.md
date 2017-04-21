@@ -1,5 +1,5 @@
 # Pacman
-#### Technologies: C#, NUnit
+#### Technologies: Visual Studio, C#, NUnit
 
 ## Index
 * [Installation](#Install)
