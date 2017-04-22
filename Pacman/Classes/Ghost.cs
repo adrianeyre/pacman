@@ -129,7 +129,7 @@ namespace Pacman
                 State[x] = 0;
             }
             statetimer.Enabled = false;
-            killabletimer.Enabled = false;
+            //killabletimer.Enabled = false;
         }
 
         private void hometimer_Tick(object sender, EventArgs e)
@@ -150,6 +150,8 @@ namespace Pacman
                         State[x] = 0;
                         xCoordinate[x] = xStart[x];
                         yCoordinate[x] = yStart[x];
+                        GhostImage[x].Left = xStart[x] * 16 - 3;
+                        GhostImage[x].Top = yStart[x] * 16 + 43;
                     }
                 } 
             }
@@ -273,8 +275,11 @@ namespace Pacman
             // Change the state off all of the ghosts so that they can be eaten
             for (int x=0; x<GhostAmount; x++)
             {
-                State[x] = 1;
-                GhostImage[x].Image = GhostImages.Images[16];
+                if (State[x] == 0)
+                {
+                    State[x] = 1;
+                    GhostImage[x].Image = GhostImages.Images[16];
+                }
             }
             killabletimer.Stop();
             killabletimer.Enabled = true;

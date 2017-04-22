@@ -17,16 +17,19 @@ namespace Pacman
             for (int x=0; x<players; x++)
             {
                 player[x] = new SoundPlayer();
+                player[x].Stream = Properties.Resources.audio1;
             }
-
-            player[0].Stream = Properties.Resources.audio1;
         }
 
         public void Play(int num)
         {
-            player[0].Stop();
-            player[0].Dispose();
-            player[0].Play();
+            //int thisone = 0;
+            //for (int x=0;x<players; x++)
+            //{
+            //    if (player[x].IsLoadCompleted) { thisone = x; }
+            //}
+            //player[num].LoadAsync();
+            player[num].Play();
         }
     }
 }
