@@ -21,7 +21,10 @@ namespace Pacman
             BoardImage.Name = "BoardImage";
             BoardImage.SizeMode = PictureBoxSizeMode.AutoSize;
             BoardImage.Location = new Point(0, 50);
-            BoardImage.Image = Properties.Resources.Board_1;
+            switch (Level)
+            {
+                case 1: BoardImage.Image = Properties.Resources.Board_1; break;
+            }
             formInstance.Controls.Add(BoardImage);
         }
 
