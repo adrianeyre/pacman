@@ -12,6 +12,11 @@
 $ git clone https://github.com/adrianeyre/pacman
 $ cd pacman
 ```
+
+## Required NuGet Packages
+- NUnit
+- NUnit3TestAdapter
+
 ## <a name="Usage">Useage</a>
 * Open `Pacman.sln` in Visual Studio
 * From the menu `Test > Run > All Tests`
